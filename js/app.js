@@ -151,6 +151,16 @@ function congratulations() {
     // add p element to the div with class 'row'
     newModalRow.appendChild(modalParagrahText);
 
+    // show star rating
+    const starRating = document.getElementsByClassName('fa-star');
+
+    if (clicksCount >= 35 && clicksCount < 40 ) {
+        starRating[0].style.display = 'none';
+    } else {
+        starRating[0].style.display = 'none';
+        starRating[1].style.display = 'none';
+    }
+
     //display modal window
     modalCloseIcon.style.display = 'block';
 }
