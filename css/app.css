@@ -100,8 +100,8 @@ h1 {
  */
 
 .score-panel {
-    text-align: left;
-    width: 345px;
+    text-align: center;
+    width: 450px;
     margin-bottom: 10px;
 }
 
@@ -119,6 +119,10 @@ h1 {
 .score-panel .restart {
     float: right;
     cursor: pointer;
+}
+
+.score-panel #game-timer {
+    margin-left:  30px;
 }
 
 #star-rating .stars {
@@ -189,7 +193,7 @@ h1 {
 .overlay #modal-content #modal-button {
     font-size: 20px;
     font-weight: 300;
-    margin: 30px 0 10px;
+    margin: 15px 0 10px;
     border-radius: 8px;
     padding: 10px 15px;
     color: #fff;
