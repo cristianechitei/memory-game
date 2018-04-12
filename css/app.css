@@ -121,6 +121,18 @@ h1 {
     cursor: pointer;
 }
 
+#star-rating .stars {
+    list-style: none;
+    display: inline-flex;
+    padding: 0;
+    margin: 0;
+}
+
+#star-rating .stars li {
+    margin: 0 2px;
+    color: gold;
+    font-size: 20px;
+}
 
 /* Congratulations message popup */
 
