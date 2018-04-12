@@ -13,10 +13,13 @@ function shuffle(array) {
     return array;
 }
 
+// variables for game timer
+let initialTime;
+let finalTime;
+
 // variable for counting clicks
 let clicksCount = 0;
 const movesCount = document.getElementsByClassName('moves')[0];
-
 
 // variable for counting the number of correct pairs
 let correctPairs = 0;
@@ -143,10 +146,14 @@ const modalCloseIcon = document.getElementById('modal');
 function congratulations() {
 	const newModalRow = document.getElementsByClassName('row')[0];
 
-	// create p element, add the styling ID and display text + total number of moves
+    // get final time and calculate time difference in seconds
+    finalTime = new Date();
+    timeDiff =  Math.floor((finalTime.getTime() - initialTime.getTime()) / 1000);
+
+	// create p element, add styling, display text, number of moves and time
 	const modalParagrahText = document.createElement('p');
     modalParagrahText.setAttribute('id', 'modal-text');
-    modalParagrahText.innerHTML = "It took you " + clicksCount + " moves to finish the game.";
+    modalParagrahText.innerHTML = "You finished the game in " + clicksCount + " moves. Your time is: " + timeDiff + " seconds.";
 
     // add p element to the div with class 'row'
     newModalRow.appendChild(modalParagrahText);
@@ -154,7 +161,7 @@ function congratulations() {
     // show star rating
     const starRating = document.getElementsByClassName('fa-star');
 
-    if (clicksCount >= 35 && clicksCount < 40 ) {
+    if (timeDiff >= 30 && timeDiff < 60 ) {
         starRating[0].style.display = 'none';
     } else {
         starRating[0].style.display = 'none';
@@ -174,4 +181,13 @@ function closeModal() {
 function countMoves() {
     clicksCount++;
     movesCount.innerHTML = clicksCount;
+
+    // when game starts, get initial time
+    if (clicksCount == 1) {
+        gameTimer();
+    }
+}
+
+function gameTimer() {
+    initialTime = new Date();
 }
