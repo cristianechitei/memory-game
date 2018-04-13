@@ -155,8 +155,8 @@ h1 {
 .overlay #close {
     position: absolute;
     cursor: pointer;
-    top: 60px;
-    right: 150px;
+    top: 20px;
+    right: 20px;
     font-size: 20px;
     color: #888;
 }
@@ -172,6 +172,7 @@ h1 {
     border-radius: 8px;
     margin: 50px auto;
     padding: 20px 0;
+    position: relative;
 }
 
 .overlay #modal-content #modal-title {
