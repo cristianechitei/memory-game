@@ -105,10 +105,10 @@ const onCardClick = function () {
 	    	openCards[0].classList.add('no-match');
     		openCards[1].classList.add('no-match');
 
-    		// run cardsUnmatch function after 0.5s
+    		// run cardsUnmatch function after 0.6s
     		setTimeout(function() {
     			cardsUnmatch();
-    		}, 500);
+    		}, 600);
 	    }
     }
 };
