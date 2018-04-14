@@ -85,30 +85,32 @@ const onCardClick = function () {
 	// if card was not clicked or matched, show card
     this.classList.add('open', 'show');
 
-    // if array already contains 2 items and unmatch them
-    if (openCards.length == 2) {
-    	cardsUnmatch();
-    }
-
     // put clicked card in openCards array
     openCards.push(this);
     countMoves();
 
     // evaluate cards in openCards array and check for match
     if (openCards.length == 2) {
-	    if (openCards[0].firstElementChild.classList.toString() === openCards[1].firstElementChild.classList.toString() ) {
+
+        // disable clicks on all cards until match / unmatch function runs
+        for (let i = 0; i <= initialArray.length - 1; i++) {
+           listOfCards[i].classList.add('no-click');
+        }
+
+        // evaluate open cards for match / no match
+        if (openCards[0].firstElementChild.classList.toString() === openCards[1].firstElementChild.classList.toString() ) {
 	    	cardsMatch();
 	    } else {
-	    	// add no-match animation
+            // add no-match animation
 	    	openCards[0].classList.add('no-match');
     		openCards[1].classList.add('no-match');
 
-    		// run cardsUnmatch function after 0.7s
+    		// run cardsUnmatch function after 0.5s
     		setTimeout(function() {
     			cardsUnmatch();
-    		}, 700);
+    		}, 500);
 	    }
-	}
+    }
 };
 
 // add event listener to each card
@@ -119,12 +121,14 @@ for (let i = 0; i < listOfCards.length; i++) {
 // if clicked cards are a match, this function is run
 function cardsMatch() {
 
-	// add match class & remove 'open', 'show' classes
+    // add match class
     openCards[0].classList.add('match');
     openCards[1].classList.add('match');
 
-    openCards[0].classList.remove('open', 'show');
-    openCards[1].classList.remove('open', 'show');
+    // allow clicks again & remove 'open', 'show' classes
+    for (let i = 0; i <= initialArray.length - 1; i++) {
+    	listOfCards[i].classList.remove('no-click', 'open', 'show');
+    }
 
     // empty openCards array
     openCards = [];
@@ -141,12 +145,13 @@ function cardsMatch() {
 // if clicked cards don't match, this function runs
 function cardsUnmatch() {
 
-	// hide cards that were clicked
-	openCards[0].classList.remove('open', 'show', 'no-match');
-	openCards[1].classList.remove('open', 'show', 'no-match');
+    // allow clicks again & hide unmatched cards
+    for (let i = 0; i <= initialArray.length - 1; i++) {
+    	listOfCards[i].classList.remove('no-click', 'open', 'show', 'no-match');
+    }
 
-	// empty openCards array
-	openCards = [];
+    // empty openCards array
+    openCards = [];
 }
 
 // close modal when clicking X icon
