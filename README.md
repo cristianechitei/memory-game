@@ -2,19 +2,25 @@
 
 ## Table of Contents
 
+* [Challenge](#challenge)
+* [Start game](#start)
 * [Instructions](#instructions)
-* [Contributing](#contributing)
+* [About the game](#about)
+
+## Challenge
+Match cards in less time with less moves.
+
+## Start
+Click the following link: https://cristianechitei.github.io/memory-game/
 
 ## Instructions
+Click and match the cards displayed
+As you progress the game counts your total number of clicks and time since you started the game
+Your end goal is to successfully finish the game using as little time & clicks as possible
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+## About
+This game was created using HTML, CSS and JavaScript. The deck of cards is randomized at the beginning of each game, so no two games are the same.
 
-To get started, open `js/app.js` and start building out the app's functionality
+JavaScript was used to build the game logic and to manipulate part of the existing HTML structure. CSS was used for styling and animating the cards based on the events happening (card is clicked, card was matched, card was not matched).
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
-
-## Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+When all cards are matched, a success modal window pops up and displays the game's statistics: number of moves made, total time and star rating.
