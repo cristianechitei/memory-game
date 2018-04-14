@@ -14,9 +14,11 @@ Match cards in less time with less moves.
 Click the following link: https://cristianechitei.github.io/memory-game/
 
 ## Instructions
-Click and match the cards displayed
-As you progress the game counts your total number of clicks and time since you started the game
-Your end goal is to successfully finish the game using as little time & clicks as possible
+Click and match the cards displayed.
+
+As you progress the game counts your total number of clicks and time since you started the game.
+
+Your end goal is to successfully finish the game using as little time & clicks as possible.
 
 ## About
 This game was created using HTML, CSS and JavaScript. The deck of cards is randomized at the beginning of each game, so no two games are the same.
