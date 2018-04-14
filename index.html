@@ -15,16 +15,22 @@
         </header>
 
         <section class="score-panel">
+        	<ul class="stars">
+				<li><i class="fa fa-star"></i></li>
+        		<li><i class="fa fa-star"></i></li>
+        		<li><i class="fa fa-star"></i></li>
+        	</ul>
         	<span class="moves">0</span> moves
+        	<span class="timer"></span>
             <div class="restart">
-        		<i class="fa fa-repeat" onclick="reloadPage();"></i>
+        		<i class="fa fa-repeat" onClick="reloadPage()"></i>
         	</div>
         </section>
 
         <div id="modal" class="overlay" style="display: none;">
             <div id="modal-content">
                 <span id="close">
-                    <i class="fa fa-close" onClick="closeModal();"></i>
+                    <i class="fa fa-close" onClick="closeModal()"></i>
                 </span>
                 <h1 id="modal-title">Good job old sport!</h1>
                 <div class="row"></div>
