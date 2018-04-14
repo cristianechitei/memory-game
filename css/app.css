@@ -99,6 +99,13 @@ h1 {
     pointer-events: none;
 }
 
+.deck .no-match.no-click {
+    backface-visibility: visible !important;
+    animation-name: flipOutY!important;
+    animation-duration: 0.5s!important;
+    animation-fill-mode: both;
+}
+
 /*
  * Styles for the Score Panel
  */
@@ -287,3 +294,20 @@ h1 {
         transform: scale3d(1, 1, 1);
     }
 }
+
+@keyframes flipOutY {
+    0% {
+        transform: perspective(400px);
+        opacity: 1;
+    }
+
+    50% {
+        transform: perspective(400px) rotate3d(0, 1, 0, -15deg);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+        opacity: 1;
+    }
+} 
