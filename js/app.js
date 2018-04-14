@@ -13,12 +13,21 @@ function shuffle(array) {
     return array;
 }
 
+// modal window
+const modalCloseIcon = document.getElementById('modal');
+
+// star rating
+const starRating = document.getElementsByClassName('stars')[0].children;
+const starRatingModal = document.getElementsByClassName('stars')[1].children;
+
 // variables for game timer
 let initialTime;
 let finalTime;
+let displayTime = document.getElementsByClassName('timer')[0];
+let timer;
 
 // variable for counting clicks
-let clicksCount = 0;
+let clicksCount = "";
 const movesCount = document.getElementsByClassName('moves')[0];
 
 // variable for counting the number of correct pairs
@@ -140,38 +149,6 @@ function cardsUnmatch() {
 	openCards = [];
 }
 
-const modalCloseIcon = document.getElementById('modal');
-
-// display modal
-function congratulations() {
-	const newModalRow = document.getElementsByClassName('row')[0];
-
-    // get final time and calculate time difference in seconds
-    finalTime = new Date();
-    timeDiff =  Math.floor((finalTime.getTime() - initialTime.getTime()) / 1000);
-
-	// create p element, add styling, display text, number of moves and time
-	const modalParagrahText = document.createElement('p');
-    modalParagrahText.setAttribute('id', 'modal-text');
-    modalParagrahText.innerHTML = "You finished the game in " + clicksCount + " moves. Your time is: " + timeDiff + " seconds.";
-
-    // add p element to the div with class 'row'
-    newModalRow.appendChild(modalParagrahText);
-
-    // show star rating
-    const starRating = document.getElementsByClassName('fa-star');
-
-    if (timeDiff >= 30 && timeDiff < 60 ) {
-        starRating[0].style.display = 'none';
-    } else {
-        starRating[0].style.display = 'none';
-        starRating[1].style.display = 'none';
-    }
-
-    //display modal window
-    modalCloseIcon.style.display = 'block';
-}
-
 // close modal when clicking X icon
 function closeModal() {
 	modalCloseIcon.style.display = 'none';
@@ -186,8 +163,62 @@ function countMoves() {
     if (clicksCount == 1) {
         gameTimer();
     }
+
+    // hide stars if clicks go beyond a certain value
+    if (clicksCount > 25 && clicksCount < 35) {
+        starRating[0].style.display = 'none';
+        starRatingModal[0].style.display = 'none';
+    } else if (clicksCount >= 35) {
+        starRating[0].style.display = 'none';
+        starRating[1].style.display = 'none';
+        starRatingModal[0].style.display = 'none';
+        starRatingModal[1].style.display = 'none';
+    }
 }
 
+// game timer
 function gameTimer() {
-    initialTime = new Date();
+    initialTime = new Date().getTime();
+
+    timer = setInterval(function() {
+        finalTime = new Date().getTime();
+        timeDiff = finalTime - initialTime;
+
+        let mins = Math.floor((timeDiff % (1000 * 60 *60)) / (1000 * 60));
+        let secs = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+        // display time value in modal
+        modalTime = mins + ' mins ' + secs + ' secs ';
+
+        // format time if values are single digit
+        if (secs < 10) {
+            secs = '0' + secs;
+        }
+
+        if (mins < 10) {
+            mins = '0' + mins;
+        }
+
+        displayTime.innerHTML = mins + ':' + secs;;
+    }, 500);
+}
+
+// display modal
+function congratulations() {
+    const newModalRow = document.getElementsByClassName('row')[0];
+
+    // create p element, add styling, display text, number of moves and time
+    const modalParagrahText = document.createElement('p');
+    modalParagrahText.setAttribute('id', 'modal-text');
+
+    modalParagrahText.innerHTML = "You finished the game in " + clicksCount + " moves. Your time is: " + modalTime;
+
+    // add p element to the div with class 'row'
+    newModalRow.appendChild(modalParagrahText);
+
+    // stop timer
+    clearTimeout(timer);
+
+    //display modal window
+    modalCloseIcon.style.display = 'block';
 }
