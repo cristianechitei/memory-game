@@ -95,6 +95,10 @@ h1 {
     background: #ff0000!important;
 }
 
+.deck .no-click {
+    pointer-events: none;
+}
+
 /*
  * Styles for the Score Panel
  */
